@@ -1,0 +1,14 @@
+{
+  "name": "notifly",
+  "version": "0.0.1",
+  "description": "CSSLint",
+  "author": {
+    "name": "Freddie Carthy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/gjunkie/notifly.js.git"
+  },
+  "main": "notifly.js",
+  "dependencies": {},
+}
