@@ -11,18 +11,20 @@
    * @param {String} string: The string that should be displayed as a notification.
    * @param {Object} options: Object containing option overrides.
    */
-  var Notifly = function (selector, options) {
+  var Notifly = function (options) {
     var defaults = {
-      debug: false,
+      selector: null,
       message: 'Generic user message',
       sticky: false,
       class: 'passive',
-      linger: 1000
+      linger: 1000,
+      fadeIn: 100,
+      fadeOut: 300
     };
 
     var self = this;
     this.options = $.extend({}, defaults, options || {});
-    this.el = selector;
+    this.el = this.options.selector;
     this.el.addClass(this.options.class);
     this.el.text(this.options.message);
     this.el.on('click', function(){
@@ -37,7 +39,7 @@
    */
   Notifly.prototype.show = function () {
     var self = this;
-    this.el.fadeIn(100);
+    this.el.fadeIn(this.options.fadeIn);
 
     if (!this.options.sticky) {
       var timer = window.setTimeout(function(){
@@ -50,7 +52,7 @@
    * Closes a notification.
    */
   Notifly.prototype.close = function () {
-    this.el.fadeOut(300);
+    this.el.fadeOut(this.options.fadeOut);
   };
 
   window.Notifly = Notifly;

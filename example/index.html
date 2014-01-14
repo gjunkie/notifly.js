@@ -51,8 +51,12 @@
     <script>
 
     function notiflyMe() {
-      var template = $('.notifly');
-      var notification = new Notifly(template, { message: 'You did it!', class: 'success', linger: 2000 });
+      var notification = new Notifly( { 
+        selector: $('.notifly'),
+        message: 'You did it!',
+        class: 'success',
+        linger: 2000
+      });
     }
 
     $('.button').on('click', function(){
