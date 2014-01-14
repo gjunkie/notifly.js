@@ -43,7 +43,9 @@
     </style>
 
     <div class="button">Notification</div>
-    <div class="notifly"></div>
+    <div class="notifly">
+      <div class="text"></div>
+    </div>
 
     <script src="jquery-1.10.2.min.js"></script>
     <script src="../notifly.js"></script>
@@ -51,8 +53,8 @@
     <script>
 
     function notiflyMe() {
-      var notification = new Notifly( { 
-        selector: $('.notifly'),
+      var notification = new Notifly( $('.notifly'), { 
+        container: $('.notifly .text'),
         message: 'You did it!',
         class: 'success',
         linger: 2000

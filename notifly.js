@@ -11,25 +11,44 @@
    * @param {String} string: The string that should be displayed as a notification.
    * @param {Object} options: Object containing option overrides.
    */
-  var Notifly = function (options) {
+  var Notifly = function (selector, options) {
     var defaults = {
-      selector: null,
+      container: null,
       message: 'Generic user message',
       sticky: false,
       class: 'passive',
       linger: 1000,
       fadeIn: 100,
-      fadeOut: 300
+      fadeOut: 300,
+      hoverPause: false,
+      closeElem: false
     };
 
     var self = this;
+    var timeout;
     this.options = $.extend({}, defaults, options || {});
-    this.el = this.options.selector;
+    this.el = selector;
     this.el.addClass(this.options.class);
-    this.el.text(this.options.message);
-    this.el.on('click', function(){
+    this.options.container.text(this.options.message);
+    this.options.closeElem = (this.options.closeElem) ? this.options.closeElem : this.el;
+    this.options.closeElem.bind('click', function(){
       self.close();
     });
+
+    // start timer
+    this.startTimer= function() {
+      timeout = setTimeout(function() {
+        self.close();
+      }, self.options.linger);
+    }
+
+    // stop timer on hover
+    $(this.el).hover(function() {
+        clearTimeout(timeout);
+      }, function() {
+        self.startTimer();
+      }
+    );
 
     this.show();
   };
@@ -41,11 +60,7 @@
     var self = this;
     this.el.fadeIn(this.options.fadeIn);
 
-    if (!this.options.sticky) {
-      var timer = window.setTimeout(function(){
-            self.close();
-          }, this.options.linger);
-    }
+    if (!this.options.sticky) this.startTimer();
   };
 
   /**

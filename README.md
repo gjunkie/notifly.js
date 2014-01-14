@@ -11,8 +11,8 @@ Install with [Bower](http://bower.io): `bower install --save notifly.js`
 
 JS
 
-    var notification = new Notifly({ 
-      container: $('.notifly'),
+    var notification = new Notifly($('.notifly'), { 
+      container: $('.copy'),
       message: 'You did it!',
       class: 'success',
       linger: 2000
@@ -26,18 +26,23 @@ CSS
     
 HTML
 
-    <div class="notifly"></div>
+    <div class="notifly">
+      <p class="copy></p>
+    </div>
 
-Notifly accepts a variety of parameters. Change how fast it fades in and out, how long it stays visible for, or make it sticky to stay visible. Pass in a custom class for styling. All notifications are dismissable on click.
+Notifly accepts a variety of parameters. Change how fast it fades in and out, how long it stays visible for, or make it sticky to stay visible. Pass in a custom class for styling. You also have the option to pause the notification on hover and to specify any element to close it on click. If no close element is specified, clicking anywhere on the notification will close it.
 
-    var notification = new Notifly({ 
+    var notification = new Notifly($('.notifly'), { 
       container: $('.textContainer'),
       message: 'You did it!',
       class: 'success',
       sticky: true,
       linger: 2000,
       fadeIn: 100,
+      fadeIn: 100,
       fadeOut: 300
+      hoverPause: false,
+      closeElem: $('.close-button')
     });
       
 The class parameter will default to 'passive'; pass in anything you like for styling.
