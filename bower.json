@@ -1,7 +1,7 @@
 {
   "name": "notifly",
   "main": "notifly.js",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "homepage": "https://github.com/gjunkie/notifly.js",
   "authors": [
     "Freddie Carthy <fcarthy@gmail.com>"

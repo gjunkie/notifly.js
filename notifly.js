@@ -16,7 +16,7 @@
       container: null,
       message: 'Generic user message',
       sticky: false,
-      class: 'passive',
+      class: 'notification',
       linger: 1000,
       fadeIn: 100,
       fadeOut: 300,

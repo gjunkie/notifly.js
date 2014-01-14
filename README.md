@@ -45,8 +45,6 @@ Notifly accepts a variety of parameters. Change how fast it fades in and out, ho
       closeElem: $('.close-button')
     });
       
-The class parameter will default to 'passive'; pass in anything you like for styling.
-
 ##Requirements
 
 - [jQuery](http://jquery.com/)
