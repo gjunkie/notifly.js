@@ -8,9 +8,8 @@ Usage
 
 JS
 
-    var container = $('.notifly');
-    var notification = new Notifly(
-      container, { 
+    var notification = new Notifly({ 
+        container: $('.notifly'),
         message: 'You did it!',
         class: 'success',
         linger: 2000 }
@@ -21,6 +20,10 @@ CSS
     .notifly {
       display: none;
     }
+    
+HTML
+
+    <div class="notifly"></div>
 
 Notifly accepts a variety of parameters:
 
