@@ -57,10 +57,8 @@
    * Displays a notification.
    */
   Notifly.prototype.show = function () {
-    var self = this;
     this.options.container.text(this.options.message);
     this.el.fadeIn(this.options.fadeIn);
-
     if (!this.options.sticky) this.startTimer();
   };
 
