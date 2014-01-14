@@ -27,10 +27,10 @@ CSS
 HTML
 
     <div class="notifly">
-      <p class="copy></p>
+      <p class="notifly-text"></p>
     </div>
 
-Notifly accepts a variety of parameters. Change how fast it fades in and out, how long it stays visible for, or make it sticky to stay visible. Pass in a custom class for styling. You also have the option to pause the notification on hover and to specify any element to close it on click. If no close element is specified, clicking anywhere on the notification will close it.
+Notifly accepts a variety of parameters. Change how fast it fades in and out, how long it stays visible for, or make it sticky to stay visible. Pass in a custom class for styling. You also have the option to pause the notification on hover and to specify any element to close it on click. If no close element is specified, clicking anywhere on the notification will close it. Nesting an element with the class `.notifly-text` is the only required HTML if you do not wish to specify your own text container.
 
     var notification = new Notifly($('.notifly'), { 
       container: $('.textContainer'),

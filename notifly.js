@@ -29,7 +29,7 @@
     this.options = $.extend({}, defaults, options || {});
     this.el = selector;
     this.el.addClass(this.options.class);
-    this.options.container.text(this.options.message);
+    this.options.container = (this.options.container !== null) ? this.options.container: this.el.children('.notifly-text');
     this.options.closeElem = (this.options.closeElem) ? this.options.closeElem : this.el;
     this.options.closeElem.bind('click', function(){
       self.close();
@@ -58,6 +58,7 @@
    */
   Notifly.prototype.show = function () {
     var self = this;
+    this.options.container.text(this.options.message);
     this.el.fadeIn(this.options.fadeIn);
 
     if (!this.options.sticky) this.startTimer();
