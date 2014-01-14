@@ -47,5 +47,4 @@ Notifly accepts a variety of parameters. Change how fast it fades in and out, ho
       
 ##Requirements
 
-- [jQuery](http://jquery.com/)
-- I'm currently changing it up to make it jQuery independent. Stay tuned.
+- [jQuery](http://jquery.com/) - I'm currently changing it up to make it jQuery independent. Stay tuned.
