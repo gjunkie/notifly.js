@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Notifly!</title>
+  </head>
+  <body>
+
+    <style>
+      .button {
+        margin: 300px auto 0;
+        width: 200px;
+        height: 25px;
+        line-height: 25px;
+        background: #232323;
+        color: #fff;
+        border-radius: 7px;
+        border: 1px solid #000;
+        text-align: center;
+        cursor: pointer;
+      }
+      .notifly {
+        display: none;
+        position: absolute;
+        top: 50px;
+        left: 50%;
+        margin-left: -100px;
+        width: 200px;
+        padding: 5px 0;
+        border-radius: 3px;
+        text-align: center;
+        color: #fff;
+        cursor: pointer;
+      }
+        .notifly.passive{
+          background: rgba(0,0,0,.8);
+        }
+        .notifly.success{
+          background: rgba(53, 190, 41, 0.8);
+        }
+        .notifly.warning{
+          background: rgba(190, 41, 41, 0.8);
+        }
+    </style>
+
+    <div class="button">Notification</div>
+    <div class="notifly"></div>
+
+    <script src="jquery-1.10.2.min.js"></script>
+    <script src="../notifly.js"></script>
+
+    <script>
+
+    function notiflyMe() {
+      var template = $('.notifly');
+      var notification = new Notifly(template, { message: 'You did it!', class: 'success', linger: 2000 });
+    }
+
+    $('.button').on('click', function(){
+      notiflyMe();
+    });
+
+    </script>
+
+  </body>
+</html>

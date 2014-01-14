@@ -22,10 +22,10 @@
 
     var self = this;
     this.options = $.extend({}, defaults, options || {});
-    this.el = $(selector);
+    this.el = selector;
     this.el.addClass(this.options.class);
     this.el.text(this.options.message);
-    this.el.on('click',function(){
+    this.el.on('click', function(){
       self.close();
     });
 
@@ -53,6 +53,6 @@
     this.el.fadeOut(300);
   };
 
-  window.rev3.Notifly = Notifly;
+  window.Notifly = Notifly;
 
 }());
