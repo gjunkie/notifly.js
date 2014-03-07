@@ -44,7 +44,6 @@
 
     <div class="button">Notification</div>
     <div class="notifly">
-      <p>Guess what?</p>
       <p class="notifly-text"></p>
     </div>
 
@@ -56,22 +55,26 @@
       function myOpen(){
         console.log('open');
       }
+
       function myClose(){
         console.log('close');
       }
-    function notiflyMe() {
-      var notification = new Notifly( $('.notifly'), { 
-        message: 'You did it!',
-        class: 'success',
-        linger: 2000,
-        onShow: myOpen,
-        onClose: myClose
-      });
-    }
 
-    $('.button').on('click', function(){
-      notiflyMe();
-    });
+      function notiflyMe(myMessage) {
+        
+        var notification = new Notifly( $('.notifly'), { 
+          message: myMessage,
+          class: 'success',
+          linger: 2000,
+          onShow: myOpen,
+          onClose: myClose
+        });
+
+      }
+
+      $('.button').on('click', function(){
+        notiflyMe('You did it!');
+      });
 
     </script>
 
