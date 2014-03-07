@@ -53,11 +53,19 @@
 
     <script>
 
+      function myOpen(){
+        console.log('open');
+      }
+      function myClose(){
+        console.log('close');
+      }
     function notiflyMe() {
       var notification = new Notifly( $('.notifly'), { 
         message: 'You did it!',
         class: 'success',
-        linger: 2000
+        linger: 2000,
+        onShow: myOpen,
+        onClose: myClose
       });
     }
 

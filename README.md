@@ -1,7 +1,7 @@
 notifly.js
 ==========
 
-A lightweight library to generate user messages. Notifly.js comes with no default styles to give you a blank canvas. Positioning, dimensions, and colors are up to you.
+A lightweight library to generate modal messages. Notifly.js comes with no default styles to give you a blank canvas. Positioning, dimensions, and colors are up to you.
 
 ##Installation
 
@@ -30,7 +30,7 @@ HTML
       <p class="notifly-text"></p>
     </div>
 
-Notifly accepts a variety of parameters. Change how fast it fades in and out, how long it stays visible for, or make it sticky to stay visible. Pass in a custom class for styling. You also have the option to pause the notification on hover and to specify any element to close it on click. If no close element is specified, clicking anywhere on the notification will close it. Nesting an element with the class `.notifly-text` is the only required HTML if you do not wish to specify your own text container.
+Notifly accepts a variety of parameters. Change how fast it fades in and out, how long it stays visible for, or make it sticky to stay visible. Pass in a custom class for styling. You also have the option to pause the notification on hover and to specify any element to close it on click. If no close element is specified, clicking anywhere on the notification will close it. Nesting an element with the class `.notifly-text` is the only required HTML if you do not wish to specify your own text container. You also have the option to pass in two callbacks. One for when the notification first shows, and one for when it closes.
 
     var notification = new Notifly($('.notifly'), { 
       container: $('.textContainer'),
@@ -42,9 +42,11 @@ Notifly accepts a variety of parameters. Change how fast it fades in and out, ho
       fadeIn: 100,
       fadeOut: 300
       hoverPause: false,
-      closeElem: $('.close-button')
+      closeElem: $('.close-button'),
+      onShow: function(){},
+      onClose: function(){},
     });
       
 ##Requirements
 
-- [jQuery](http://jquery.com/) - I'm currently changing it up to make it jQuery independent. Stay tuned.
+- [jQuery](http://jquery.com/)

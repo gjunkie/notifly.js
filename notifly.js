@@ -21,7 +21,9 @@
       fadeIn: 100,
       fadeOut: 300,
       hoverPause: false,
-      closeElem: false
+      closeElem: false,
+      onShow: function(){},
+      onClose: function(){}
     };
 
     var self = this;
@@ -54,19 +56,20 @@
   };
 
   /**
-   * Displays a notification.
+   * Displays the notification.
    */
   Notifly.prototype.show = function () {
     this.options.container.text(this.options.message);
     this.el.fadeIn(this.options.fadeIn);
     if (!this.options.sticky) this.startTimer();
+    this.options.onShow();
   };
 
   /**
-   * Closes a notification.
+   * Closes the notification.
    */
   Notifly.prototype.close = function () {
-    this.el.fadeOut(this.options.fadeOut);
+    this.el.fadeOut(this.options.fadeOut, this.options.onClose);
   };
 
   window.Notifly = Notifly;
