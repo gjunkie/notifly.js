@@ -11,7 +11,7 @@
    * @param {String} string: The string that should be displayed as a notification.
    * @param {Object} options: Object containing option overrides.
    */
-  var Notifly = function (selector, options) {
+  var Notifly = function (template, options) {
     var defaults = {
       container: null,
       message: 'Generic user message',
@@ -26,10 +26,10 @@
       onClose: function(){}
     };
 
-    var self = this;
-    var timeout;
+    var self = this, timeout;
+
     this.options = $.extend({}, defaults, options || {});
-    this.el = selector;
+    this.el = $(template.html());
     this.el.addClass(this.options.class);
     this.options.container = (this.options.container !== null) ? this.options.container: this.el.children('.notifly-text');
     this.options.closeElem = (this.options.closeElem) ? this.options.closeElem : this.el;
@@ -38,7 +38,7 @@
     });
 
     // start timer
-    this.startTimer= function() {
+    this.startTimer = function() {
       timeout = setTimeout(function() {
         self.close();
       }, self.options.linger);
@@ -59,6 +59,7 @@
    * Displays the notification.
    */
   Notifly.prototype.show = function () {
+    $('body').append(this.el);
     this.options.container.text(this.options.message);
     this.el.fadeIn(this.options.fadeIn);
     if (!this.options.sticky) this.startTimer();
@@ -69,7 +70,11 @@
    * Closes the notification.
    */
   Notifly.prototype.close = function () {
-    this.el.fadeOut(this.options.fadeOut, this.options.onClose);
+    var self = this;
+    this.el.fadeOut(this.options.fadeOut, function(){
+      self.options.onClose();
+      self.el.remove();
+    });
   };
 
   window.Notifly = Notifly;

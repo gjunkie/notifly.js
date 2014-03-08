@@ -13,16 +13,15 @@
         line-height: 25px;
         background: #232323;
         color: #fff;
-        border-radius: 7px;
+        border-radius: 3px;
         border: 1px solid #000;
         text-align: center;
         cursor: pointer;
       }
       .notifly {
-        display: none;
         position: absolute;
-        top: 50px;
-        left: 50%;
+        top: 20px;
+        right: 20px;
         margin-left: -100px;
         width: 200px;
         padding: 5px 0;
@@ -42,13 +41,17 @@
         }
     </style>
 
-    <div class="button">Notification</div>
-    <div class="notifly">
-      <p class="notifly-text"></p>
-    </div>
+    <div class="button">Click Me!</div>
+
+    <script id="notiflyTemplate" type="text/template">
+      <div class="notifly">
+        <p class="notifly-text"></p>
+      </div>
+    </script>
 
     <script src="jquery-1.10.2.min.js"></script>
     <script src="../notifly.js"></script>
+
 
     <script>
 
@@ -62,7 +65,7 @@
 
       function notiflyMe(myMessage) {
         
-        var notification = new Notifly( $('.notifly'), { 
+        var notification = new Notifly( $('#notiflyTemplate'), { 
           message: myMessage,
           class: 'success',
           linger: 2000,

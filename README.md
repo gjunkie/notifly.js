@@ -17,18 +17,14 @@ JS
       class: 'success',
       linger: 2000
     });
-      
-CSS
-
-    .notifly {
-      display: none;
-    }
     
 HTML
 
-    <div class="notifly">
-      <p class="notifly-text"></p>
-    </div>
+    <script id="notiflyTemplate" type="text/template">
+      <div class="notifly">
+        <p class="notifly-text"></p>
+      </div>
+    </script>
 
 Notifly accepts a variety of parameters. Change how fast it fades in and out, how long it stays visible for, or make it sticky to stay visible. Pass in a custom class for styling. You also have the option to pause the notification on hover and to specify any element to close it on click. If no close element is specified, clicking anywhere on the notification will close it. Nesting an element with the class `.notifly-text` is the only required HTML if you do not wish to specify your own text container. You also have the option to pass in two callbacks. One for when the notification first shows, and one for when it closes.
 
