@@ -19,6 +19,7 @@
         cursor: pointer;
       }
       .notifly {
+        display: none;
         position: absolute;
         top: 20px;
         right: 20px;
@@ -43,34 +44,39 @@
 
     <div class="button">Click Me!</div>
 
-    <script id="notiflyTemplate" type="text/template">
-      <div class="notifly">
-        <p class="notifly-text"></p>
-      </div>
-    </script>
-
     <script src="jquery-1.10.2.min.js"></script>
     <script src="../notifly.js"></script>
 
 
     <script>
 
-      function myOpen(){
+      function myOpenCallback(){
         console.log('open');
       }
 
-      function myClose(){
+      function myCloseCallback(){
         console.log('close');
       }
 
       function notiflyMe(myMessage) {
         
-        var notification = new Notifly( $('#notiflyTemplate'), { 
+        var notification = Notifly.create({ 
           message: myMessage,
           class: 'success',
-          linger: 2000,
-          onShow: myOpen,
-          onClose: myClose
+          linger: 3000,
+          sticky: true,
+          priority: 1,
+          onShow: myOpenCallback,
+          onClose: myCloseCallback
+        });
+
+        var notification2 = Notifly.create({ 
+          message: 'testing here',
+          class: 'success',
+          sticky: true,
+          priority: 0,
+          onShow: myOpenCallback,
+          onClose: myCloseCallback
         });
 
       }
