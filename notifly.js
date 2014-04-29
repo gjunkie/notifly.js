@@ -25,43 +25,14 @@
   Notifly.prototype.create = function (options) {
     var notification = new NotiflyMessage(options);
     this.queue(notification);
-    this.sort();
   }
 
   /**
    * Queues the notification.
    */
   Notifly.prototype.queue = function (notification) {
-    var self = this;
-    if (notification.options.priority) {
-      if (this.activeQueue[notification.options.priority]) {
-        this.activeQueue.splice(this.activeQueue[notification.options.priority], 0, notification);
-      } else {
-        this.activeQueue[notification.options.priority] = notification;
-      }
-
-      // Remove Undefined array items
-      for (var i = 0; i < this.activeQueue.length; i++) {
-        if (this.activeQueue[i] == undefined) {         
-          this.activeQueue.splice(i, 1);
-          i--;
-        }
-      }
-    } else {
-      this.activeQueue.push(notification);
-    }
+    this.activeQueue.push(notification);
     this.show();
-  };
-
-  /**
-   * Sort queue based on priority.
-   */
-  Notifly.prototype.sort = function () {
-    var self = this;
-    return this.activeQueue.sort(function(a, b) {
-      var x = a.options.priority; var y = b.options.priority;
-      return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-    });
   };
 
   /**
