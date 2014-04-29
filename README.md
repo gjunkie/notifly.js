@@ -37,7 +37,6 @@ Notifly will queue up notifications and show them one at a time. You also have t
       sticky: true,
       linger: 2000,
       fadeIn: 100,
-      fadeIn: 100,
       fadeOut: 300
       hoverPause: false,
       closeElem: $('.close-button'),
