@@ -51,11 +51,11 @@
     <script>
 
       function myOpenCallback(){
-        console.log('open');
+        //console.log('open');
       }
 
       function myCloseCallback(){
-        console.log('close');
+        //console.log('close');
       }
 
       function notiflyMe(myMessage) {
@@ -65,7 +65,7 @@
           class: 'success',
           linger: 3000,
           sticky: true,
-          priority: 1,
+          priority: 0,
           onShow: myOpenCallback,
           onClose: myCloseCallback
         });
@@ -74,7 +74,7 @@
           message: 'testing here',
           class: 'success',
           sticky: true,
-          priority: 0,
+          priority: 1,
           onShow: myOpenCallback,
           onClose: myCloseCallback
         });

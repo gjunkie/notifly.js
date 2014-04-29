@@ -25,7 +25,7 @@
   Notifly.prototype.create = function (options) {
     var notification = new NotiflyMessage(options);
     this.queue(notification);
-    this.show();
+    this.sort();
   }
 
   /**
@@ -33,24 +33,35 @@
    */
   Notifly.prototype.queue = function (notification) {
     var self = this;
-    var newMessage = {
-      message: notification.options.message,
-      options: notification.options
-    }
     if (notification.options.priority) {
-      var newArray = [];
-      this.activeQueue[notification.options.priority] = newMessage;
-      for(var i = 0; i<this.activeQueue.length; i++){
-        if (this.activeQueue[i]){
-          newArray.push(this.activeQueue[i]);
+      if (this.activeQueue[notification.options.priority]) {
+        this.activeQueue.splice(this.activeQueue[notification.options.priority], 0, notification);
+      } else {
+        this.activeQueue[notification.options.priority] = notification;
+      }
+
+      // Remove Undefined array items
+      for (var i = 0; i < this.activeQueue.length; i++) {
+        if (this.activeQueue[i] == undefined) {         
+          this.activeQueue.splice(i, 1);
+          i--;
         }
       }
-      console.log(newArray);
-      this.activeQueue = newArray;
-      console.log(this.activeQueue);
     } else {
-      this.activeQueue.push(newMessage);
+      this.activeQueue.push(notification);
     }
+    this.show();
+  };
+
+  /**
+   * Sort queue based on priority.
+   */
+  Notifly.prototype.sort = function () {
+    var self = this;
+    return this.activeQueue.sort(function(a, b) {
+      var x = a.options.priority; var y = b.options.priority;
+      return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+    });
   };
 
   /**
@@ -65,7 +76,6 @@
    */
   Notifly.prototype.show = function () {
     if (this.activeQueue.length) {
-    //alert(this.activeQueue[0]);
       var current = this.activeQueue[0], self = this;
       $('body').append(current.options.container);
       current.options.container.fadeIn(current.options.fadeIn);
