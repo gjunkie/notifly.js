@@ -60,16 +60,15 @@
 
       function notiflyMe(myMessage) {
         
-        var notification = Notifly.create({ 
+        Notifly.create({ 
           message: myMessage,
           class: 'success',
           linger: 3000,
-          sticky: true,
           onShow: myOpenCallback,
           onClose: myCloseCallback
         });
 
-        var notification2 = Notifly.create({ 
+        Notifly.create({ 
           message: 'testing here',
           class: 'success',
           sticky: true,

@@ -30,7 +30,7 @@ Notifly accepts a variety of parameters. Change how fast it fades in and out, ho
 
 Notifly will queue up notifications and show them one at a time. You also have the option to pass in two callbacks. One for when the notification first shows, and one for when it closes.
 
-    var notification = Notifly.create({ 
+    Notifly.create({ 
       container: $('.notifly'),
       message: 'You did it!',
       class: 'success',

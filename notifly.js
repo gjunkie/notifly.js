@@ -84,7 +84,7 @@
       this.options.container.append($('<div class="notifly-text" />'));
       //this.options.container.appendTo($('body'));
     }
-    this.options.container.text(this.options.message);
+    this.options.container.html(this.options.message);
 
     this.options.container.addClass(this.options.class);
     this.options.container = (this.options.container !== null) ? this.options.container: this.options.container.children('.notifly-text');
