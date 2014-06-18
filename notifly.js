@@ -57,7 +57,9 @@
    * Closes the current notification.
    */
   Notifly.prototype.close = function () {
-    this.activeQueue[0].close();
+    if (this.activeQueue[0]) {
+      this.activeQueue[0].close();
+    }
   };
 
 
