@@ -11,7 +11,8 @@
    * @param {Object} options: Object containing option overrides.
    */
   var Notifly = function () {
-    this.activeQueue = [], var self = this;
+    this.activeQueue = [];
+    var self = this;
     $(window).on('NotiflyClosed', function(){
       self.unqueue();
       self.show();
@@ -47,7 +48,8 @@
    */
   Notifly.prototype.show = function () {
     if (this.activeQueue.length) {
-      var current = this.activeQueue[0], var self = this;
+      var current = this.activeQueue[0];
+      var self = this;
       $('body').append(current.options.container);
       current.options.container.fadeIn(current.options.fadeIn);
     }
